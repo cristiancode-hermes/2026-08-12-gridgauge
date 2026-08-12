@@ -1,0 +1,38 @@
+import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  app.setGlobalPrefix('api');
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  });
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+      forbidNonWhitelisted: false,
+    }),
+  );
+
+  const config = new DocumentBuilder()
+    .setTitle('GridGauge API')
+    .setDescription('Monitorización de consumo energético — electricidad, agua, gas')
+    .setVersion('1.0.0')
+    .addBearerAuth()
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/docs', app, document);
+
+  const port = Number(process.env.PORT || 3046);
+  await app.listen(port);
+  // eslint-disable-next-line no-console
+  console.log(`GridGauge API running on http://localhost:${port}/api`);
+}
+
+void bootstrap();
