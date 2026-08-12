@@ -75,9 +75,9 @@
 | Caddy subdomain | ✅ | `gridgauge.proyectos.cristiancode.dev` → 200 (SPA + `/api*` → :3057) |
 | manage-apis.sh | ✅ | Registrado (3057/gridgauge/2026-08-12-gridgauge), 47 APIs alineadas |
 | Landing page | ✅ | `proyectos.cristiancode.dev` categoría Productividad, JS OK, push `aa343ff` |
-| Portfolio es/en/pt | ⏳ | ver §6 del flujo (actualizar tras inserción) |
-| Screenshots | ⏳ | captura manual post-deploy |
-| Excel tracker | ⏳ | fila pendiente |
+| Portfolio es/en/pt | ✅ | `cristiancode.dev/project/gridgauge/` + `/en/` + `/pt/` → 200, id 172, theme_gridgauge (default card, same as scanforge) |
+| Screenshots | ✅ | `gridgauge.png` (88 KB) + `gridgauge-m.png` (43 KB) capturados del dashboard real con datos demo, verificados visualmente, live en cristiancode.dev |
+| Excel tracker | ✅ | Fila 78 (GridGauge, puerto 3057, Full Stack) |
 
 ## Summary
 
