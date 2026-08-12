@@ -1,0 +1,7 @@
+QA testing complete for 2026-08-12
+Project: gridgauge
+Build: ✅ API tsc OK + Web ng build OK (146 kB, 39 kB gzip)
+Tests: 28/28 passing (4 suites, jest) + 31/31 endpoint checks
+New tests: 0 added (existing coverage adequate: auth, tariffs, budgets, anomalies)
+Issues: 1 media (fixed: null as any → IsNull) + 2 cosméticas (formato unidades informes, rango chart 30d)
+Published: ⏳ PENDING (subdominio gridgauge.proyectos.cristiancode.dev live, port 3057)
