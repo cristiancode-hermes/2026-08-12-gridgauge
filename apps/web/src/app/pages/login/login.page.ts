@@ -11,14 +11,14 @@ import { ToastService } from '../../services/toast.service';
   template: `
     <h1 class="auth-title">Entrar</h1>
     <p class="auth-sub">Accede a tu monitor de energía.</p>
-    <form (ngSubmit)="submit()">
+    <form (ngSubmit)="submit()" autocomplete="off">
       <div class="field">
         <label for="email">Email</label>
-        <input id="email" class="input" type="email" name="email" [(ngModel)]="email" required autocomplete="email" placeholder="tu@email.com" />
+        <input id="email" class="input" type="email" name="email" [(ngModel)]="email" required autocomplete="off" placeholder="tu@email.com" />
       </div>
       <div class="field">
         <label for="password">Contraseña</label>
-        <input id="password" class="input" type="password" name="password" [(ngModel)]="password" required autocomplete="current-password" placeholder="••••••••" />
+        <input id="password" class="input" type="password" name="password" [(ngModel)]="password" required autocomplete="new-password" placeholder="••••••••" />
       </div>
       <div class="form-actions">
         <button class="btn btn-primary" type="submit" [disabled]="loading()" style="width: 100%;">
@@ -36,8 +36,8 @@ export class LoginPageComponent {
   private readonly router = inject(Router);
   private readonly toast = inject(ToastService);
 
-  readonly email = signal('casa@gridgauge.dev');
-  readonly password = signal('demo1234');
+  readonly email = signal('');
+  readonly password = signal('');
   readonly loading = signal(false);
 
   async submit(): Promise<void> {

@@ -109,23 +109,26 @@ export class SettingsPageComponent implements OnInit {
   }
 
   async load(): Promise<void> {
-    const u = this.auth.user();
-    if (!u) {
-      await this.auth.loadProfile();
+    try {
+      const u = this.auth.user();
+      if (!u) {
+        await this.auth.loadProfile();
+      }
+      const user = this.auth.user();
+      if (user) {
+        this.profile.displayName = user.displayName ?? '';
+        this.profile.email = user.email;
+        this.profile.currency = user.currency ?? 'EUR';
+        this.co2.electricity = user.co2Factors?.electricity ?? 0.21;
+        this.co2.water = user.co2Factors?.water ?? 0.34;
+        this.co2.gas = user.co2Factors?.gas ?? 2.04;
+        this.prefs.spikeThresholdSigma = user.prefs?.spikeThresholdSigma ?? 2.5;
+        this.prefs.quietWindow = user.prefs?.quietWindow ?? { start: '23:00', end: '07:00' };
+        this.prefs.quietWindowEnabled = user.prefs?.quietWindowEnabled ?? false;
+      }
+    } finally {
+      this.loading.set(false);
     }
-    const user = this.auth.user();
-    if (user) {
-      this.profile.displayName = user.displayName ?? '';
-      this.profile.email = user.email;
-      this.profile.currency = user.currency;
-      this.co2.electricity = user.co2Factors.electricity;
-      this.co2.water = user.co2Factors.water;
-      this.co2.gas = user.co2Factors.gas;
-      this.prefs.spikeThresholdSigma = user.prefs.spikeThresholdSigma;
-      this.prefs.quietWindow = user.prefs.quietWindow;
-      this.prefs.quietWindowEnabled = user.prefs.quietWindowEnabled;
-    }
-    this.loading.set(false);
   }
 
   async saveProfile(): Promise<void> {

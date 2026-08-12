@@ -12,6 +12,12 @@ export interface AuthUser {
   displayName: string | null;
   currency: string;
   timezone: string;
+  co2Factors: { electricity: number; water: number; gas: number };
+  prefs: {
+    spikeThresholdSigma: number;
+    quietWindow: { start: string; end: string };
+    quietWindowEnabled: boolean;
+  };
   createdAt: Date;
 }
 
@@ -79,6 +85,13 @@ export class AuthService {
       displayName: user.displayName,
       currency: user.currency,
       timezone: user.timezone,
+      co2Factors: user.co2Factors ?? { electricity: 0.21, water: 0.34, gas: 2.04 },
+      prefs:
+        user.prefs ?? {
+          spikeThresholdSigma: 2.5,
+          quietWindow: { start: '02:00', end: '05:00' },
+          quietWindowEnabled: true,
+        },
       createdAt: user.createdAt,
     };
   }
