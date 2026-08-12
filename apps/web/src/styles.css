@@ -839,6 +839,25 @@ table.data td.num, table.data th.num {
   color: var(--gg-muted);
   margin-top: 20px;
 }
+.auth-demo {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border: 1px dashed var(--gg-border-soft);
+  border-radius: var(--radius-md);
+  background: var(--gg-surface-2);
+  font-size: 13px;
+  color: var(--gg-muted);
+  text-align: center;
+  line-height: 1.7;
+}
+.auth-demo code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12.5px;
+  color: var(--gg-ink);
+  background: var(--gg-surface);
+  padding: 2px 7px;
+  border-radius: 6px;
+}
 .meter-utility {
   width: 4px;
   border-radius: 2px;

@@ -26,6 +26,10 @@ import { ToastService } from '../../services/toast.service';
         </button>
       </div>
     </form>
+    <div class="auth-demo">
+      <strong>Cuenta de prueba con datos</strong><br />
+      <code>casa@gridgauge.dev</code> · <code>demo1234</code>
+    </div>
     <div class="auth-switch">
       ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
     </div>
