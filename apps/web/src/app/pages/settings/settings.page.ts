@@ -119,9 +119,9 @@ export class SettingsPageComponent implements OnInit {
         this.profile.displayName = user.displayName ?? '';
         this.profile.email = user.email;
         this.profile.currency = user.currency ?? 'EUR';
-        this.co2.electricity = user.co2Factors?.electricity ?? 0.21;
-        this.co2.water = user.co2Factors?.water ?? 0.34;
-        this.co2.gas = user.co2Factors?.gas ?? 2.04;
+        this.co2.electricity = Math.round((user.co2Factors?.electricity ?? 0.21) * 100) / 100;
+        this.co2.water = Math.round((user.co2Factors?.water ?? 0.34) * 100) / 100;
+        this.co2.gas = Math.round((user.co2Factors?.gas ?? 2.04) * 100) / 100;
         this.prefs.spikeThresholdSigma = user.prefs?.spikeThresholdSigma ?? 2.5;
         this.prefs.quietWindow = user.prefs?.quietWindow ?? { start: '23:00', end: '07:00' };
         this.prefs.quietWindowEnabled = user.prefs?.quietWindowEnabled ?? false;
